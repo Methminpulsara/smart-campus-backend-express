@@ -25,11 +25,15 @@ const studetSchema = new mongose.Schema({
       ref: "Course",
     },
   ],
-  attendance:[{
-    type:mongose.STATES.Types.ObjectId,
-    ref:"Course",
-    presntDates:[Date]
-  }]
+attendance: [
+    {
+      course: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Course",
+      },
+      presentDates: [Date],
+    }
+  ]
 },
     {timeseries:true}
 );
