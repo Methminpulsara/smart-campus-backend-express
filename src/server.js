@@ -4,6 +4,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db')
 
+
+const authRoutes = require('./routes/auth.route')
+
 connectDB()
 
 const app = express();
@@ -19,7 +22,7 @@ app.get("/", (req,res) => {
 
 
 //Routse
-
+app.use("/api/auth", authRoutes);
 
 //Server Start 
 const PORT = process.env.PORT || 5000;
