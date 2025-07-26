@@ -4,9 +4,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db')
 
+const errorHandler = require('./middleware/errorHandler')
 
 const authRoutes = require('./routes/auth.route')
-
+const studentRoutes = require("./routes/student.route");
 connectDB()
 
 const app = express();
@@ -23,6 +24,11 @@ app.get("/", (req,res) => {
 
 //Routse
 app.use("/api/auth", authRoutes);
+app.use('/api/student',studentRoutes)
+
+//Global error Handler
+app.use(errorHandler)
+
 
 //Server Start 
 const PORT = process.env.PORT || 5000;

@@ -1,8 +1,8 @@
-const mongose = require('mongoose');
+const mongoose = require('mongoose');
 
-const studetSchema = new mongose.Schema({
+const studetSchema = new mongoose.Schema({
   user: {
-    type: mongose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
@@ -21,7 +21,7 @@ const studetSchema = new mongose.Schema({
   },
   enrollerdCourses: [
     {
-      type: mongose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Course",
     },
   ],
@@ -38,4 +38,4 @@ attendance: [
     {timeseries:true}
 );
 
-module.exports = mongose.model("Student", studetSchema);
+module.exports = mongoose.model("Student", studetSchema);
