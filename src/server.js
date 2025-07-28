@@ -1,4 +1,5 @@
-
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./config/swagger");
 
 const express = require('express');
 const dotenv = require('dotenv').config();
@@ -38,10 +39,7 @@ app.use("/api/admin", adminRoutes);
 app.use('/api/summary',dashbaordRoutes)
 
 
-
-const { swaggerUi, specs } = require("./config/swagger");
-
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 //Global error Handler
