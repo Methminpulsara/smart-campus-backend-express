@@ -27,22 +27,3 @@ exports.getAttendance = async (userId, courseId) => {
   );
   return attendance || { message: "No attendance record found" };
 };
-
-const Student = require("../models/Student");
-
-exports.getStudentByUserId = async (userId) => {
-  return await Student.findOne({ user: userId });
-};
-
-exports.createStudentProfile = async (userId, faculty, department) => {
-  const regNumber = "REG" + Date.now();
-
-  const student = new Student({
-    user: userId,
-    regNumber,
-    faculty,
-    department,
-  });
-
-  return await student.save();
-};
