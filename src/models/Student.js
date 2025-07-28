@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const studetSchema = new mongoose.Schema({
+const studentSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -19,13 +19,13 @@ const studetSchema = new mongoose.Schema({
   department: {
     type: String,
   },
-  enrollerdCourses: [
+  enrolledCourses: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Course",
     },
   ],
-attendance: [
+  attendance: [
     {
       course: {
         type: mongoose.Schema.Types.ObjectId,
@@ -34,8 +34,6 @@ attendance: [
       presentDates: [Date],
     }
   ]
-},
-    {timeseries:true}
-);
+}, { timestamps: true });
 
-module.exports = mongoose.model("Student", studetSchema);
+module.exports = mongoose.model("Student", studentSchema);

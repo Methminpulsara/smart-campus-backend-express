@@ -1,24 +1,29 @@
-const Student = require('../models/Student')
+const Student = require("../models/Student");
 
-exports.getStudentByID = async (id)=>{
-    return await Student.find(id).populate('enrolledCourses')   
+exports.getStudentByUserId = async (userId) => {
+  return await Student.findOne({ user: userId }).populate("enrolledCourses");
 };
 
-exports.updateProfile =async(id,body)=>{
-    return await Student.findByIdAndUpdate(id,body,{new:true, runValidators:true}, );
-}
+exports.updateProfile = async (userId, body) => {
+  return await Student.findOneAndUpdate({ user: userId }, body, {
+    new: true,
+    runValidators: true,
+  });
+};
 
-exports.enrollInCources =async(studentID,courseId)=>{
-    const student = await Student.findById(studentID);
-    if(!student.enrollerdCourses.some(cid => cid.toString()===courseId)){
-        student.enrollerdCourses.push(courseId);
-        await student.save();
-    }
-    return student;
-}
+exports.enrollInCourses = async (userId, courseId) => {
+  const student = await Student.findOne({ user: userId });
+  if (!student.enrolledCourses.includes(courseId)) {
+    student.enrolledCourses.push(courseId);
+    await student.save();
+  }
+  return student;
+};
 
-exports.getAttendance = async (studentId, courseId) => {
-  const student = await Student.findById(studentId);
-  const attendance = student.attendance.find(a => a.courseId.toString() === courseId);
+exports.getAttendance = async (userId, courseId) => {
+  const student = await Student.findOne({ user: userId });
+  const attendance = student.attendance.find(
+    (a) => a.course.toString() === courseId
+  );
   return attendance || { message: "No attendance record found" };
 };
