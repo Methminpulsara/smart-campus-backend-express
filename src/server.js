@@ -8,6 +8,8 @@ const errorHandler = require('./middleware/errorHandler')
 
 const authRoutes = require('./routes/auth.route')
 const studentRoutes = require("./routes/student.route");
+const courseRoutes = require("./routes/course.route");
+
 connectDB()
 
 const app = express();
@@ -25,6 +27,7 @@ app.get("/", (req,res) => {
 //Routse
 app.use("/api/auth", authRoutes);
 app.use('/api/student',studentRoutes)
+app.use('/api/course',courseRoutes)
 
 //Global error Handler
 app.use(errorHandler)
