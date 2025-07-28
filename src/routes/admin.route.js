@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const adminController = require("../controllers/admin.controller");
 const {protect,authorizeRoles} = require("../middleware/authMiddleware");
 const asyncHandler = require("../util/asyncHandler");
+const adminController = require("../controllers/admin.controller");
 
 
 router.get("/users",protect,authorizeRoles("admin"), asyncHandler(adminController.getAllUsers));
