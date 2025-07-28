@@ -15,6 +15,12 @@ const courseRoutes = require("./routes/course.route");
 const facultyRoutes = require('./routes/faculty.route')
 const adminRoutes =  require('./routes/admin.route')
 const dashbaordRoutes = require('./routes/dashboard.route')
+const assignmentRoutes = require('./routes/assignment.route')
+
+
+
+
+
 
 connectDB()
 
@@ -37,6 +43,8 @@ app.use('/api/course',courseRoutes)
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/admin", adminRoutes);
 app.use('/api/summary',dashbaordRoutes)
+app.use('/api/assignment',assignmentRoutes)
+
 
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
