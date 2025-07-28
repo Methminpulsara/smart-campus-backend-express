@@ -10,7 +10,7 @@ const authRoutes = require('./routes/auth.route')
 const studentRoutes = require("./routes/student.route");
 const courseRoutes = require("./routes/course.route");
 const facultyRoutes = require('./routes/faculty.route')
-
+const adminRoutes =  require('./routes/admin.route')
 
 
 connectDB()
@@ -32,6 +32,7 @@ app.use("/api/auth", authRoutes);
 app.use('/api/student',studentRoutes)
 app.use('/api/course',courseRoutes)
 app.use("/api/faculty", facultyRoutes);
+app.use("/api/admin", adminRoutes);
 
 //Global error Handler
 app.use(errorHandler)
