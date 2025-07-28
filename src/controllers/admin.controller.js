@@ -1,3 +1,5 @@
+
+
 const adminService = require('../service/admin.service')
 
 exports.getAllUsers = async (req, res) =>{

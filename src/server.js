@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
@@ -11,7 +13,7 @@ const studentRoutes = require("./routes/student.route");
 const courseRoutes = require("./routes/course.route");
 const facultyRoutes = require('./routes/faculty.route')
 const adminRoutes =  require('./routes/admin.route')
-
+const dashbaordRoutes = require('./routes/dashboard.route')
 
 connectDB()
 
@@ -33,6 +35,14 @@ app.use('/api/student',studentRoutes)
 app.use('/api/course',courseRoutes)
 app.use("/api/faculty", facultyRoutes);
 app.use("/api/admin", adminRoutes);
+app.use('/api/summary',dashbaordRoutes)
+
+
+
+const { swaggerUi, specs } = require("./config/swagger");
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
+
 
 //Global error Handler
 app.use(errorHandler)

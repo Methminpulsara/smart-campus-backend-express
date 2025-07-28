@@ -1,0 +1,93 @@
+# 📘 Smart Campus Management System - ER Diagram (Mermaid)
+
+```mermaid
+erDiagram
+
+    USERS {
+        string _id PK
+        string name
+        string email
+        string password
+        string role
+    }
+
+    STUDENTS {
+        string _id PK
+        string userId FK
+        string department
+        int year
+    }
+
+    FACULTY {
+        string _id PK
+        string userId FK
+        string department
+        string designation
+    }
+
+    COURSES {
+        string _id PK
+        string title
+        string code
+        string department
+        int year
+        string facultyId FK
+    }
+
+    ENROLLMENTS {
+        string _id PK
+        string studentId FK
+        string courseId FK
+    }
+
+    ATTENDANCE {
+        string _id PK
+        string courseId FK
+        string studentId FK
+        date date
+        bool present
+    }
+
+    ASSIGNMENTS {
+        string _id PK
+        string courseId FK
+        string title
+        string description
+        date dueDate
+    }
+
+    SUBMISSIONS {
+        string _id PK
+        string assignmentId FK
+        string studentId FK
+        string fileUrl
+        date submittedAt
+        int grade
+    }
+
+    EVENTS {
+        string _id PK
+        string title
+        string description
+        date date
+        string organizer
+    }
+
+    NOTICES {
+        string _id PK
+        string title
+        string content
+        date postedAt
+        string postedBy
+    }
+
+    USERS ||--o{ STUDENTS : has
+    USERS ||--o{ FACULTY : has
+    FACULTY ||--o{ COURSES : teaches
+    STUDENTS ||--o{ ENROLLMENTS : enrolls
+    COURSES ||--o{ ENROLLMENTS : includes
+    STUDENTS ||--o{ ATTENDANCE : marks
+    COURSES ||--o{ ATTENDANCE : logs
+    COURSES ||--o{ ASSIGNMENTS : gives
+    ASSIGNMENTS ||--o{ SUBMISSIONS : has
+    STUDENTS ||--o{ SUBMISSIONS : submits
