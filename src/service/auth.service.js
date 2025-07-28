@@ -20,16 +20,7 @@ const register = async ({ name, email, password, role }) => {
     role
   });
 
-  // ✅ If role is student, auto create student record
-  if (role === "student") {
-    await Student.create({
-      user: user._id,
-      regNumber: "REG" + Date.now(), // Auto generated reg number
-      faculty: "Engineering", // Optional: Replace with real input if needed
-      department: "Computer Science" // Optional
-    });
-  }
-
+ 
   return {
     id: user._id,
     name: user.name,

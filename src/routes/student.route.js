@@ -9,4 +9,6 @@ router.put('/update',protect,asyncHandler(studentController.updateProfile))
 router.post("/courses/:courseId", protect, asyncHandler(studentController.enrollCourse));
 router.get("/attendance", protect, asyncHandler(studentController.getAttendance));
 
+router.post("/create-profile", protect, authorizeRoles("student"), asyncHandler(studentController.createProfile));
+
 module.exports = router;
