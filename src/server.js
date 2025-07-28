@@ -19,7 +19,7 @@ const assignmentRoutes = require('./routes/assignment.route')
 const subbmitionRoutes = require('./routes/submission.route')
 const eventRoutes = require('./routes/event.route');
 const noticeRoutes = require('./routes/notice.route');
-
+const ticketRoutes = require ('./routes/ticket.route')
 
 
 
@@ -49,6 +49,7 @@ app.use('/api/assignment',assignmentRoutes)
 app.use('/api/subbmition',subbmitionRoutes)
 app.use('/api/event',eventRoutes)
 app.use('/api/notice',noticeRoutes)
+app.use('/api/ticket',ticketRoutes)
 
 
 
