@@ -16,6 +16,7 @@ const facultyRoutes = require('./routes/faculty.route')
 const adminRoutes =  require('./routes/admin.route')
 const dashbaordRoutes = require('./routes/dashboard.route')
 const assignmentRoutes = require('./routes/assignment.route')
+const subbmitionRoutes = require('./routes/submission.route')
 
 
 
@@ -44,6 +45,7 @@ app.use("/api/faculty", facultyRoutes);
 app.use("/api/admin", adminRoutes);
 app.use('/api/summary',dashbaordRoutes)
 app.use('/api/assignment',assignmentRoutes)
+app.use('/api/subbmition',subbmitionRoutes)
 
 
 
