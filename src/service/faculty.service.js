@@ -3,7 +3,7 @@ const Student = require('../models/Student')
 
 
 exports.getByID = async(userId)=>{
-    return await Faculty.findById({user:userId}).populate('courses')
+    return await Faculty.findOne({user:userId}).populate('courses')
 }
 
 exports.updateProfile =async(userId,body)=>{
@@ -31,4 +31,15 @@ exports.markAttendance = async({studentId,courseId,data}) =>{
         })
     }
     await student.save()
+}
+
+exports.createStudentProfile = async (userId,department,position) => {
+
+  const faculty = new Faculty({
+    user:userId,
+    department:department,
+    position:position
+  });
+
+  return await faculty.save()
 }

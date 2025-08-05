@@ -32,13 +32,20 @@ exports.createProfile = async (req, res) => {
       return res.status(400).json({ message: "Student profile already exists" });
     }
 
-    const { faculty, department } = req.body;
+    const { regNumber,faculty, department } = req.body;
 
-    const student = await studentService.createStudentProfile(req.user.id, faculty, department);
-    if(!student){
-    res.status(500).json({ message: "Internal Server Error" });
-    }
-    res.status(201).json(student);
-  
+   const student  = await studentService.createStudentProfile(
+    req.user.id,
+    regNumber,
+    faculty,
+    department
+   );
+
+   if(!student){
+      return res
+        .status(500)
+        .json({ message: "Failed to create student profile" });
+   }
+   res.status(201).json({message:`Student profile created ${student}`});
   
 };

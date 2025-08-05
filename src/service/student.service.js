@@ -27,3 +27,18 @@ exports.getAttendance = async (userId, courseId) => {
   );
   return attendance || { message: "No attendance record found" };
 };
+
+
+exports.createStudentProfile = async (userId,regNumber,faculty,department) => {
+
+  const student = new Student({
+    user:userId,
+    regNumber:regNumber,
+    faculty:faculty,
+    department:department
+  });
+
+  return await student.save()
+
+
+} 

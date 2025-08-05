@@ -6,6 +6,11 @@ const asyncHandler = require('../util/asyncHandler')
 
 
 //   EKKWTH THMA PROTECT KLE NH 
+
+// faculty eke profile eka create krnn 
+router.post('/create-profile',protect,authorizeRoles('faculty'),asyncHandler(facultyController.createProfile))
+
+
 router.get('/profile',asyncHandler(facultyController.getProfile))
 router.put('/profile',asyncHandler(facultyController.updateProfile))
 router.post('/assing/:id',asyncHandler(facultyController.assingCourse))
